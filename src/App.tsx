@@ -22,7 +22,11 @@ function App() {
 
   return (
     <div>
-      {alertVisible && <Alert>{alertName}</Alert>}
+      {alertVisible && (
+        <Alert onClose={() => setAlertVisibility(false)}>
+          {alertName} Clicked
+        </Alert>
+      )}
       <ListGroup
         items={items}
         heading="Cities"
