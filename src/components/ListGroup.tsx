@@ -3,10 +3,11 @@ import { useState } from "react"; // Hook
 interface Props {
   items: string[];
   heading: string;
+  onSelectItem: (item: string) => void;
 }
 
 //instead of Fragment we can use <>
-function ListGroup({ items, heading }: Props) {
+function ListGroup({ items, heading, onSelectItem }: Props) {
   let [selectedIndex, setSelectedIndex] = useState(-1);
 
   //   const message = items.length === 0 ? <p>No item found</p> : null;
@@ -25,7 +26,10 @@ function ListGroup({ items, heading }: Props) {
                 : "list-group-item"
             }
             key={item}
-            onClick={() => setSelectedIndex(index)}
+            onClick={() => {
+              setSelectedIndex(index);
+              onSelectItem(item);
+            }}
           >
             {item}
           </li>
